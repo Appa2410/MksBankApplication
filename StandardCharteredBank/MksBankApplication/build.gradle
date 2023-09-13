@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.14'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.bank.Application'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation group: 'org.yaml', name: 'snakeyaml', version: '1.31'
+	implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation:2.4.0'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.5.6'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '3.1.2'
+	implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation group: 'org.json', name: 'json', version: '20230618'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation group: 'org.springframework.restdocs', name: 'spring-restdocs-mockmvc', version: '3.0.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
